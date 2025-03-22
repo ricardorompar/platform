@@ -61,3 +61,14 @@ variable "aws_vpc_cidr" {
   description = "CIDR block for the AWS VPC."
   type        = string
 }
+
+# HCP Auth
+variable "hcp_client_id" {
+  description = "Client ID of the Service Principal to authenticate with HCP."
+  type        = string
+}
+
+variable "hcp_client_secret" {
+  description = "Client secret of the Service Principal to authenticate with HCP."
+  type        = string
+}

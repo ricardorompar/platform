@@ -22,3 +22,14 @@ variable "hcp_project_id" {
   description = "The ID of the project in HCP."
   type        = string
 }
+
+# HCP Auth
+variable "hcp_client_id" {
+  description = "Client ID of the Service Principal to authenticate with HCP."
+  type = string
+}
+
+variable "hcp_client_secret" {
+  description = "Client secret of the Service Principal to authenticate with HCP."
+  type = string
+}

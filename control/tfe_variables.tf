@@ -25,6 +25,7 @@ resource "tfe_variable" "boundary_password" {
   category     = "terraform"
   workspace_id = tfe_workspace.boundary.id
   description  = "Password for the admin user of the Boundary cluster."
+  sensitive    = true
 }
 
 resource "tfe_variable" "boundary_tier" {
@@ -43,6 +44,22 @@ resource "tfe_variable" "hcp_project_id" {
   description  = "The ID of the project in HCP."
 }
 
+resource "tfe_variable" "hcp_client_id" {
+  key          = "hcp_client_id"
+  value        = var.hcp_client_id
+  category     = "terraform"
+  workspace_id = tfe_workspace.boundary.id
+  description  = "Client ID of the Service Principal to authenticate with HCP."
+}
+
+resource "tfe_variable" "hcp_client_secret" {
+  key          = "hcp_client_secret"
+  value        = var.hcp_client_secret
+  category     = "terraform"
+  workspace_id = tfe_workspace.boundary.id
+  description  = "Client secret of the Service Principal to authenticate with HCP."
+  sensitive    = true
+}
 
 #############################################
 #                   VAULT                   #
