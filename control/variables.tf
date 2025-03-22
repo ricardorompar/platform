@@ -1,3 +1,9 @@
+variable "org_name" {
+  description = "Name of the HCP Terraform organization."
+  type        = string
+  default     = "r2-org"
+}
+
 # Boundary workspace variables
 variable "boundary_cluster_id" {
   description = "The name of the Boundary cluster."

@@ -5,10 +5,6 @@
 # https://developer.hashicorp.com/vault/tutorials/cloud-ops/terraform-hcp-provider-vault
 # https://developer.hashicorp.com/vault/tutorials/cloud-ops/amazon-peering-hcp
 
-provider "hcp" {
-  project_id = var.project_id
-}
-
 resource "hcp_boundary_cluster" "boundary" {
   cluster_id = var.boundary_cluster_id
   username   = var.boundary_username

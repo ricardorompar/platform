@@ -7,8 +7,12 @@ terraform {
       version = "1.2.0"
     }
     hcp = {
-      source = "hashicorp/hcp"
+      source  = "hashicorp/hcp"
       version = "0.104.0"
     }
   }
+}
+
+provider "hcp" {
+  project_id = var.hcp_project_id
 }
