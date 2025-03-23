@@ -52,11 +52,6 @@ variable "cloud_provider" {
 }
 
 # AWS VPC and HVN workspace variables
-variable "hcp_hvn_id" {
-  description = "ID/name of the HVN."
-  type        = string
-}
-
 variable "aws_vpc_cidr" {
   description = "CIDR block for the AWS VPC."
   type        = string

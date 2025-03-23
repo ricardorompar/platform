@@ -18,11 +18,6 @@ variable "boundary_tier" {
   type        = string
 }
 
-variable "hcp_project_id" {
-  description = "The ID of the project in HCP."
-  type        = string
-}
-
 # HCP Auth
 variable "hcp_client_id" {
   description = "Client ID of the Service Principal to authenticate with HCP."

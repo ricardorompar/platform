@@ -36,14 +36,6 @@ resource "tfe_variable" "boundary_tier" {
   description  = "Tier of the Boundary cluster. One of 'standard' or 'plus'."
 }
 
-resource "tfe_variable" "hcp_project_id" {
-  key          = "hcp_project_id"
-  value        = var.project_id
-  category     = "terraform"
-  workspace_id = tfe_workspace.boundary.id
-  description  = "The ID of the project in HCP."
-}
-
 resource "tfe_variable" "hcp_client_id" {
   key          = "hcp_client_id"
   value        = var.hcp_client_id
@@ -82,7 +74,7 @@ resource "tfe_variable" "vault_tier" {
 }
 
 resource "tfe_variable" "vault_region" {
-  key          = "vault_region"
+  key          = "region"
   value        = var.region
   category     = "terraform"
   workspace_id = tfe_workspace.vault.id
@@ -97,36 +89,29 @@ resource "tfe_variable" "vault_cloud" {
   description  = "Cloud provider for the HCP Vault cluster."
 }
 
+resource "tfe_variable" "vault_hcp_client_id" {
+  key          = "hcp_client_id"
+  value        = var.hcp_client_id
+  category     = "terraform"
+  workspace_id = tfe_workspace.vault.id
+  description  = "Client ID of the Service Principal to authenticate with HCP."
+}
+
+resource "tfe_variable" "vault_hcp_client_secret" {
+  key          = "hcp_client_secret"
+  value        = var.hcp_client_secret
+  category     = "terraform"
+  workspace_id = tfe_workspace.vault.id
+  description  = "Client secret of the Service Principal to authenticate with HCP."
+  sensitive    = true
+}
+
 #############################################
 #              AWS VPC and HVN              #
 #############################################
 
-resource "tfe_variable" "hcp_hvn_id" {
-  key          = "hcp_hvn_id"
-  value        = var.hcp_hvn_id
-  category     = "terraform"
-  workspace_id = tfe_workspace.vpc_hvn_peering.id
-  description  = "ID/name of the HashiCorp Virtual Network."
-}
-
-resource "tfe_variable" "hcp_peering_id" {
-  key          = "hcp_peering_id"
-  value        = "hcp-peering"
-  category     = "terraform"
-  workspace_id = tfe_workspace.vpc_hvn_peering.id
-  description  = "ID/name of the HCP peering connection."
-}
-
-resource "tfe_variable" "hcp_route_id" {
-  key          = "hcp_route_id"
-  value        = "hcp-route"
-  category     = "terraform"
-  workspace_id = tfe_workspace.vpc_hvn_peering.id
-  description  = "ID/name of the HCP route."
-}
-
 resource "tfe_variable" "hvn_region" {
-  key          = "hvn_region"
+  key          = "region"
   value        = var.region
   category     = "terraform"
   workspace_id = tfe_workspace.vpc_hvn_peering.id
@@ -141,10 +126,27 @@ resource "tfe_variable" "aws_vpc_cidr" {
   description  = "CIDR block for the AWS VPC."
 }
 
-resource "tfe_variable" "hvn_cloud" {
-  key          = "hvn_cloud"
+resource "tfe_variable" "hvn_cloud_provider" {
+  key          = "cloud_provider"
   value        = var.cloud_provider
   category     = "terraform"
   workspace_id = tfe_workspace.vpc_hvn_peering.id
   description  = "Cloud provider for the HCP HVN."
+}
+
+resource "tfe_variable" "hvn_hcp_client_id" {
+  key          = "hcp_client_id"
+  value        = var.hcp_client_id
+  category     = "terraform"
+  workspace_id = tfe_workspace.vpc_hvn_peering.id
+  description  = "Client ID of the Service Principal to authenticate with HCP."
+}
+
+resource "tfe_variable" "hvn_hcp_client_secret" {
+  key          = "hcp_client_secret"
+  value        = var.hcp_client_secret
+  category     = "terraform"
+  workspace_id = tfe_workspace.vpc_hvn_peering.id
+  description  = "Client secret of the Service Principal to authenticate with HCP."
+  sensitive    = true
 }
