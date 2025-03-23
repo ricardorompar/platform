@@ -13,8 +13,8 @@ variable "region" {
   type        = string
 }
 
-variable "cloud_provider" {
-  description = "Cloud provider for the HCP HVN and Vault cluster."
+variable "hcp_hvn_id" {
+  description = "ID/name of the HVN."
   type        = string
 }
 

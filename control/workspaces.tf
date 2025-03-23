@@ -35,6 +35,12 @@ resource "tfe_workspace" "vault" {
   organization = data.tfe_organization.r2.name
   tag_names    = ["platform", "vault", "hcp", "aws"]
   description  = "Workspace for managing the HCP Vault Dedicated."
+  vcs_repo {
+    branch         = "main"
+    identifier     = "ricardorompar/platform"
+    oauth_token_id = data.tfe_oauth_client.oauth-client.oauth_token_id
+  }
+  working_directory = "/vault"
 }
 
 

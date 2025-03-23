@@ -5,10 +5,8 @@
 # https://developer.hashicorp.com/vault/tutorials/cloud-ops/terraform-hcp-provider-vault
 # https://developer.hashicorp.com/vault/tutorials/cloud-ops/amazon-peering-hcp
 
-data 
-
 resource "hcp_vault_cluster" "hcp_vault" {
-  hvn_id          = hcp_hvn.hvn.hvn_id
+  hvn_id          = var.hcp_hvn_id
   cluster_id      = var.vault_cluster_id
   tier            = var.vault_tier
   public_endpoint = true

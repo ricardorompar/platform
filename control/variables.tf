@@ -57,6 +57,12 @@ variable "aws_vpc_cidr" {
   type        = string
 }
 
+variable "hcp_hvn_id" {
+  description = "ID/name of the HVN."
+  type        = string
+  default     = "hcp-hvn-aws"
+}
+
 # HCP Auth
 variable "hcp_client_id" {
   description = "Client ID of the Service Principal to authenticate with HCP."

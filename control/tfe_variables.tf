@@ -81,14 +81,6 @@ resource "tfe_variable" "vault_region" {
   description  = "Region for the HCP Vault cluster."
 }
 
-resource "tfe_variable" "vault_cloud" {
-  key          = "vault_cloud"
-  value        = var.cloud_provider
-  category     = "terraform"
-  workspace_id = tfe_workspace.vault.id
-  description  = "Cloud provider for the HCP Vault cluster."
-}
-
 resource "tfe_variable" "vault_hcp_client_id" {
   key          = "hcp_client_id"
   value        = var.hcp_client_id
@@ -106,9 +98,25 @@ resource "tfe_variable" "vault_hcp_client_secret" {
   sensitive    = true
 }
 
+resource "tfe_variable" "vault_hvn_id" {
+  key          = "hcp_hvn_id"
+  value        = var.hcp_hvn_id
+  category     = "terraform"
+  workspace_id = tfe_workspace.vault.id
+  description  = "ID/name of the HVN."
+}
+
 #############################################
 #              AWS VPC and HVN              #
 #############################################
+
+resource "tfe_variable" "hcp_hvn_id" {
+  key          = "hcp_hvn_id"
+  value        = var.hcp_hvn_id
+  category     = "terraform"
+  workspace_id = tfe_workspace.vpc_hvn_peering.id
+  description  = "ID/name of the HVN."
+}
 
 resource "tfe_variable" "hvn_region" {
   key          = "region"
