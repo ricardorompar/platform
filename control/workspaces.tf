@@ -48,4 +48,10 @@ resource "tfe_workspace" "vpc_hvn_peering" {
   organization = data.tfe_organization.r2.name
   tag_names    = ["platform", "vpc", "hvn", "aws", "hcp"]
   description  = "Workspace for managing the HCP HVN and its peering connection with an AWS VPC."
+  vcs_repo {
+    branch         = "main"
+    identifier     = "ricardorompar/platform"
+    oauth_token_id = data.tfe_oauth_client.oauth-client.oauth_token_id
+  }
+  working_directory = "/vpc_hvn"
 }

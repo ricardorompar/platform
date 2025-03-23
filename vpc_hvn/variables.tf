@@ -16,7 +16,7 @@ variable "cloud_provider" {
 variable "hcp_hvn_id" {
   description = "ID/name of the HVN."
   type        = string
-  default     = "hcp-hvn"
+  default     = "hcp-hvn-aws"
 }
 
 variable "peering_id" {
