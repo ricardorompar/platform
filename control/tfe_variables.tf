@@ -70,7 +70,7 @@ resource "tfe_variable" "vault_tier" {
   value        = var.vault_tier
   category     = "terraform"
   workspace_id = tfe_workspace.vault.id
-  description  = "Tier of the Vault deployment. One of 'development', 'standard' or 'plus'."
+  description  = "Tier of the Vault deployment. One of dev, standard_small, standard_medium, standard_large, starter_small, plus_small, plus_medium or plus_large"
 }
 
 resource "tfe_variable" "vault_region" {
